@@ -27,11 +27,52 @@
   <link rel="stylesheet" type="text/css" href="css/p4-style.css" />
 </head>
 
-<body onload="updateSummary()">
-  <header>
-    <a class="navbar-brand" href="index.html"><img src="images/moomoologo.png" alt="MooMoo Grocery Logo" /></a>
+<body onload="updateSummary(), loadQty()";  onbeforeunload="saveQty()">
+      <!-- Header with menu -->
+  <header class="container-fluid fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="index.html"><img src="images/moomoologo.png" alt="MooMoo Grocery Logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarAisles" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Aisles
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarAisles">
+              <a class="dropdown-item" href="aisles/produce.html">Produce</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="aisles/bakery.html">Bakery</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="aisles/meat.html">Meat and Poultry</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="aisles/dairy.html">Dairy and Eggs</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="aisles/beverages.html">Beverages</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Login.html">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="register-link" href="SignUp.html">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html"><span class="material-icons md-24">shopping_cart</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
-  <div id="wrapper">
+  <br>
+  <br>
+  <br>
+  <br>
+    <div id="wrapper">
     <div class="shopping-cart">
       <h2 class="title">Shopping Cart</h2>
       <div class="product">
@@ -40,9 +81,16 @@
         <h4>Price: $<span class="price">0.87</span></h4>
         <p class="quantity">
             Quantity:
-            <input class="quantity q-in" type="number" min="1" value="1" onchange="productSubtotal(0.87,this.value, 'subtotal1')"; />
+            <input class="quantity q-in" type="number" min="1" value="1" onchange="productSubtotal(0.87,this.value)"; />
           </p>
-          <h5>Subtotal: $ <span class="subtotal" id="subtotal1">0.87</span></h5>
+          <h5>Sub-Total: $ <span class="subtotal" id="subtotal">0.87</span></h5>
+      
+          <script>
+              function productSubtotal(price, quantity){
+                  var productSub= (price*quantity).toFixed(2); 
+                  document.getElementById("subtotal").innerHTML = productSub;
+              }
+          </script>
         <button class="remove" type="button" data-toggle="modal" data-target="#removeModal">
           Remove
         </button>
@@ -55,9 +103,16 @@
       <h4>Price: $<span class="price">0.79</span></h4>
       <p class="quantity">
         Quantity:
-        <input class="quantity q-in" type="number" min="1" value="1" onchange="productSubtotal(0.79,this.value, 'subtotal2')"; />
+        <input class="quantity q-in" type="number" min="1" value="1" onchange="productSubtotal2(0.79,this.value)"; />
       </p>
-      <h5>Subtotal: $ <span class="subtotal" id="subtotal2">0.79</span></h5>
+      <h5>Sub-Total: $ <span class="subtotal" id="subtotal2">0.79</span></h5>
+  
+      <script>
+          function productSubtotal2(price, quantity){
+              var productSub= (price*quantity).toFixed(2); 
+              document.getElementById("subtotal2").innerHTML = productSub;
+          }
+      </script>
       <button class="remove" type="button" data-toggle="modal" data-target="#removeModal">
         Remove
       </button>
@@ -70,9 +125,17 @@
     <h4>Price: $<span class="price">0.79</span></h4>
     <p class="quantity">
       Quantity:
-      <input class="quantity q-in" type="number" min="1" value="1" onchange="productSubtotal(0.79,this.value, 'subtotal3')"; />
+      <input class="quantity q-in" type="number" min="1" value="1" onchange="productSubtotal3(0.79,this.value)"; />
     </p>
-    <h5>Subtotal: $ <span class="subtotal" id="subtotal3">0.79</span></h5>
+    <h5>Sub-Total: $ <span class="subtotal" id="subtotal3">0.79</span></h5>
+
+    <script>
+        function productSubtotal3(price, quantity){
+            var productSub= (price*quantity).toFixed(2); 
+            document.getElementById("subtotal3").innerHTML = productSub;
+        }
+    </script>
+
     <button class="remove" type="button" data-toggle="modal" data-target="#removeModal">
       Remove
     </button>

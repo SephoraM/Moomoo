@@ -4,18 +4,17 @@ body{
 }
 
 
-header{
-    width:100%;
-    background-color:white;
-}
-
 .title{
     font-family: inherit;
     text-align: center; 
     color: white;
     justify-content: center;
-    display:fixed;
+    display:flex;
     
+}
+
+header{
+    background-color: white;
 }
 
 .shopping-cart{
