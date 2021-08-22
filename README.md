@@ -1,7 +1,5 @@
 # Moomoo Grocery
 
-## Live Website: [MooMooGrocery.live](https://www.moomoogrocery.live/)
-
 Team members:
 
 Sephora Maltais 40151723,
